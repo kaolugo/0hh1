@@ -9,87 +9,266 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+protocol touched{
+    func touchesBegan()
+}
+
+class GameScene: SKScene{
+    //var sampleView: SKView
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    override init (size: CGSize){
+        super.init(size: size)
+    }
     
+    init (size: CGSize, gameView: SKView){
+        super.init(size: size)
+        //sampleView = gameView
+        
+        let sampleBoard = Board(dimensions: 4, gameView: gameView, gameScene: self)
+        
+        self.backgroundColor = UIColor.black
+        
+        var d = size.width * 0.05
+        var margin = size.width * 0.1
+        var sizeX = (size.width - 5 * d) / 4
+        
+        var incrementRow = margin * 2.4 //diff in x divided by margin
+        var incrementCol = 3.0
+        
+        var positionY = (size.height - 4 * sizeX) / 2 + 3 * (d + sizeX)
+        var positionX = 1.5 * margin
+        
+        for row in 0...3{
+          //var increment = CGFloat(row)
+          //positionX = 1.5 * margin
+          //
+          
+          //loop through columns in 'board' 2D array
+          for col in 0...3{
+            sampleBoard.board[row][col].size = CGSize(width: sizeX, height: sizeX)
+            
+            sampleBoard.board[row][col].position = CGPoint(x: positionX, y: positionY)
+            
+            addChild(sampleBoard.board[row][col])
+            
+            positionX = positionX + incrementRow
+            //positionY = positionY - incrementRow
+            
+          }
+          positionY = positionY - incrementRow
+          
+          //reset the position variables
+          positionX = 1.5 * margin
+          //positionY = (size.height - 4 * sizeX) / 2 + 3 * (d + sizeX)
+        }
+        
+        // random integer generator
+            let randomInt = Int.random(in: 1..<5)
+            let colors: [String] = ["red", "blue"];
+           
+            
+            // if integer generated is 4, generate five buttons
+            if (randomInt == 4) {
+                for _ in 0...5 {
+                    var validBoard = false;
+                    
+                    while !validBoard {
+                        var randomRow = Int.random(in: 0..<4)
+                        var randomCol = Int.random(in: 0..<4)
+                        
+                        var randomColor = Int.random(in:0..<2)
+                        
+                        sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: colors[randomColor])
+                        sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: false)
+                        
+                        var validRowRed = false
+                        var validRowBlue = false
+                        var validColRed = false
+                        var validColBlue = false
+                        
+                        validRowRed = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[0])
+                        validRowBlue = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[1])
+                        validColRed = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[0])
+                        validColBlue = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[1])
+                        
+                        if (validRowRed && validRowBlue && validColRed && validColBlue){
+                            validBoard = true
+                        }
+                        else {
+                            // otherwise, undo everything and try again
+                            sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: "white")
+                            sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: true)
+                            
+                        }
+                    }
+                }
+            }
+            else {
+                // generate four randomly placed blue or red buttons
+                for _ in 0...4 {
+                    var validBoard = false;
+                    
+                    while !validBoard {
+                        var randomRow = Int.random(in: 0..<4)
+                        var randomCol = Int.random(in: 0..<4)
+                        
+                        var randomColor = Int.random(in:0..<2)
+                        
+                        sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: colors[randomColor])
+                        sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: false)
+                        
+                        var validRowRed = false
+                        var validRowBlue = false
+                        var validColRed = false
+                        var validColBlue = false
+                        
+                        validRowRed = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[0])
+                        validRowBlue = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[1])
+                        validColRed = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[0])
+                        validColBlue = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[1])
+                        
+                        if (validRowRed && validRowBlue && validColRed && validColBlue){
+                            validBoard = true
+                        }
+                        else {
+                            // otherwise, undo everything and try again
+                            sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: "white")
+                            sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: true)
+                            
+                        }
+                    }
+                }
+            }
+        
+        let new = newBoardButton(labelFont: "AlNile")
+        
+        new.position = CGPoint(x: size.width/2, y: size.height/4 - 100)
+        //replay.size = CGSize(width: size.width/2, height: size.height/12)
+        //replay.zPosition = 10
+        addChild(new)
+        
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func didMove(to view: SKView) {
         //super.sceneDidLoad()
-        let sampleBoard = Board(dimensions: 4)
+        let sampleBoard = Board(dimensions: 4, gameView: view, gameScene: self)
         self.backgroundColor = UIColor.black
-        print("hello")
-//        let button = Button(userAccess: true)
-//        addChild(button)
-//      button.size = CGSize(width: 20, height: 20)
-//        button.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
-      //var index1 : Int
-      //var index2 : Int
-      //index1 = 0
-      //index2 = 0
       
       var d = size.width * 0.05
       var margin = size.width * 0.1
       var sizeX = (size.width - 5 * d) / 4
-      var sizeY = (size.height - 4 * sizeX) / 2
+      var incrementRow = margin * 2.4 //diff in x divided by margin
+      var incrementCol = 3.0
       
-      var positionX : CGFloat
-      var positionY : CGFloat
+      var positionY = (size.height - 4 * sizeX) / 2 + 3 * (d + sizeX)
+      var positionX = 1.5 * margin
       
-      
-      for i in 0...(4-1){
-        sampleBoard.board[i][0].size = CGSize(width: sizeX, height: sizeX)
-        //sampleBoard.board[0][i].size = CGSize(width: sizeX, height: sizeX)
-        
-        positionX = 1.5 * margin
-        
-        var increment = CGFloat(i)
-        
-        positionY = (size.height - 4 * sizeX) / 2 + increment * (d + sizeX)
-        sampleBoard.board[i][0].position = CGPoint(x: positionX, y: positionY)
-        //sampleBoard.board[0][i].position = CGPoint(x: positionX, y: positionY)
-        
-        addChild(sampleBoard.board[i][0])
-        //addChild(sampleBoard.board[0][i])
-      }
- 
-      //for i in
-      
-      
-      for i in 1...(4-1){
-        sampleBoard.board[0][i].size = CGSize(width: sizeX, height: sizeX)
-        
-        var increment = CGFloat(i)
-        
-        positionX = margin + d + increment * (sizeX + d)
-        
-        positionY = (size.height - 4 * sizeX) / 2
-        
-        sampleBoard.board[0][i].position = CGPoint(x: positionX, y: positionY)
-        
-        addChild(sampleBoard.board[0][i])
-      }
- 
-      
-      for i in 1...(4-1){
-        for j in 1...(4-1){
+      //loop through rows in 'board' 2D array
+      for row in 0...3{
+        for col in 0...3{
+          sampleBoard.board[row][col].size = CGSize(width: sizeX, height: sizeX)
           
-          sampleBoard.board[i][j].size = CGSize(width: sizeX, height: sizeX)
+          sampleBoard.board[row][col].position = CGPoint(x: positionX, y: positionY)
           
-          var incrementI = CGFloat(i)
-          var incrementJ = CGFloat(j)
+          addChild(sampleBoard.board[row][col])
           
-          positionX = margin + d + incrementI * (sizeX + d)
+          positionX = positionX + incrementRow
           
-          positionY = (size.height - 4 * sizeX) / 2 + incrementJ * (sizeX + d)
-          
-          sampleBoard.board[i][j].position = CGPoint(x: positionX, y: positionY)
-          addChild(sampleBoard.board[i][j])
         }
+        positionY = positionY - incrementRow
+        
+        //reset the position variables
+        positionX = 1.5 * margin
+        //positionY = (size.height - 4 * sizeX) / 2 + 3 * (d + sizeX)
       }
-        //button.anchorPoint
+        
+        
+        // populate the board with colored tiles
+        
+        // random integer generator
+        let randomInt = Int.random(in: 1..<5)
+        let colors: [String] = ["red", "blue"];
+       
+        
+        // if integer generated is 4, generate five buttons
+        if (randomInt == 4) {
+            for _ in 0...5 {
+                var validBoard = false;
+                
+                while !validBoard {
+                    var randomRow = Int.random(in: 0..<4)
+                    var randomCol = Int.random(in: 0..<4)
+                    
+                    var randomColor = Int.random(in:0..<2)
+                    
+                    sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: colors[randomColor])
+                    sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: false)
+                    
+                    var validRowRed = false
+                    var validRowBlue = false
+                    var validColRed = false
+                    var validColBlue = false
+                    
+                    validRowRed = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[0])
+                    validRowBlue = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[1])
+                    validColRed = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[0])
+                    validColBlue = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[1])
+                    
+                    if (validRowRed && validRowBlue && validColRed && validColBlue){
+                        validBoard = true
+                    }
+                    else {
+                        // otherwise, undo everything and try again
+                        sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: "white")
+                        sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: true)
+                        
+                    }
+                }
+            }
+        }
+        else {
+            // generate four randomly placed blue or red buttons
+            for _ in 0...4 {
+                var validBoard = false;
+                
+                while !validBoard {
+                    var randomRow = Int.random(in: 0..<4)
+                    var randomCol = Int.random(in: 0..<4)
+                    
+                    var randomColor = Int.random(in:0..<2)
+                    
+                    sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: colors[randomColor])
+                    sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: false)
+                    
+                    var validRowRed = false
+                    var validRowBlue = false
+                    var validColRed = false
+                    var validColBlue = false
+                    
+                    validRowRed = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[0])
+                    validRowBlue = sampleBoard.rowHasNoThreesOfColor(size: 4, row: randomRow, color: colors[1])
+                    validColRed = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[0])
+                    validColBlue = sampleBoard.colHasNoThreesOfColor(size: 4, col: randomCol, color: colors[1])
+                    
+                    if (validRowRed && validRowBlue && validColRed && validColBlue){
+                        validBoard = true
+                    }
+                    else {
+                        // otherwise, undo everything and try again
+                        sampleBoard.board[randomRow][randomCol].changeButtonColor(desiredColor: "white")
+                        sampleBoard.board[randomRow][randomCol].changeUserAccess(permission: true)
+                        
+                    }
+                }
+            }
+        }
     }
+  
     
     
 

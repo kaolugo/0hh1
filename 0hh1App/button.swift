@@ -15,6 +15,8 @@ class Button: SKSpriteNode {
     var userAccess: Bool //user accessibility
     //var touched: Bool //whether it has been pressed we don't really need this
     var count: Int
+    //also the delegate
+    var delegate : touched?
     
     init(userAccess: Bool){
         let texture = SKTexture(imageNamed: "tile")
@@ -25,7 +27,6 @@ class Button: SKSpriteNode {
         self.buttonColor = "white"
         //self.touched = false
         self.count = 0
-        
         
         
         super.init(texture: texture, color: white, size: texture.size())
@@ -65,6 +66,9 @@ class Button: SKSpriteNode {
                 self.buttonColor = "white"
             }
         }
+        
+
+        delegate!.touchesBegan()
 
     
     }
@@ -105,7 +109,4 @@ class Button: SKSpriteNode {
             self.userAccess = false
         }
     }
-    
-    
-    
 }

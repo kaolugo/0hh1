@@ -10,21 +10,26 @@ import SpriteKit
 import UIKit
 //import button.swift"
 
-class Board {
+class Board : touched{
     //what a board must know:
     var solved: Bool //whether the board has been solved
     let dimension: Int //dimensions of the board
     var board = [[Button]]() //2 dimensional array of buttons. 2 dimensional array, of array, of buttons
+    let view: SKView
+    let scene: SKScene
     
-    init(dimensions: Int){
+    init(dimensions: Int, gameView: SKView, gameScene: SKScene){
         self.solved = false
         self.dimension = dimensions
+        self.view = gameView
+        self.scene = gameScene
         
       //populated 2D array board with buttons
         for _ in 0...(dimensions - 1){
             var row = [Button]()
-            for _ in 0...(dimensions - 1){
+            for c in 0...(dimensions - 1){
                 row.append(Button(userAccess: true))
+                row[c].delegate = self
             }
             board.append(row)
         }
@@ -35,7 +40,23 @@ class Board {
   // TODO: decide which buttons are user unavailable and will be colored (pre populate the board)
   
   // TODO: check if board has been solved according to all rules
-  
+   
+    func touchesBegan() {
+        solved = self.boardHasBeenSolved(size: dimension)
+        
+        if (solved) {
+            print("SOLVED")
+            let scene = GameClear(size: self.scene.size)
+            let transition = SKTransition.crossFade(withDuration: 1.5)
+            view.presentScene(scene, transition: transition)
+            //return true
+        }
+        //else {
+            //return false
+        //}
+    }
+    
+    
   func boardHasBeenSolved (size : Int) -> Bool{
     var solved : Bool
     var index : Int
