@@ -48,15 +48,24 @@ class GameStart : SKScene {
         
         // add 4x4 option
         //let fourButton = fourByfour(labelFont: "AvenirNext", labelText: "4x4", )
-        let fourButton = fourByfour(labelFont: "AppleSDGothicNeo-Regular", labelText: "4x4", transDirection: 1)
-        fourButton.position = CGPoint(x: size.width/2, y: size.height/4 + 200)
+        let fourButton = fourByfour(labelFont: "AppleSDGothicNeo-Regular", labelText: "4x4", transDirection: 1, viewHeight: size.height)
+        
+        // EXPERIMENT - made the UI adaptable to different screen sizes
+        var fourButtonY = title.position.y - 120
+        fourButton.position = CGPoint(x: size.width/2, y: fourButtonY)
+        
+        //print(xPosition)
         fourButton.zPosition = 10
         addChild(fourButton)
         
         
         // how to play button
-        let howToPlay = howToPlayButton(labelFont: "AppleSDGothicNeo-Regular")
-        howToPlay.position = CGPoint(x: size.width/2, y: size.height/4 + 100)
+        let howToPlay = howToPlayButton(labelFont: "AppleSDGothicNeo-Regular", viewHeight: size.height)
+        
+        // EXPERIMENT - made the UI adaptable to different screen sizes
+        var howToPlayY = fourButton.position.y - size.height / 20 * 2
+        howToPlay.position = CGPoint(x: size.width/2, y : howToPlayY)
+        
         addChild(howToPlay)
         
         // running tile man animation
@@ -109,14 +118,15 @@ class GameStart : SKScene {
         
         let firstFrameTexture = tileManTextures[0]
         tileMan = SKSpriteNode(texture: firstFrameTexture)
-        tileMan.position = CGPoint(x: size.width, y: size.height / 4)
+        tileMan.position = CGPoint(x: size.width, y: size.height / 6)
+        //tileMan.setScale(1/5)
         tileMan.setScale(1/3)
         addChild(tileMan)
         
         
         let actualDuration = CGFloat(1.0)
         
-        let actionMove1 = SKAction.move(to: CGPoint(x: 3 * size.width/5, y: size.height/4), duration: TimeInterval(actualDuration))
+        let actionMove1 = SKAction.move(to: CGPoint(x: 3 * size.width/5, y: size.height/6), duration: TimeInterval(actualDuration))
         
         tileMan.run(actionMove1)
     }
@@ -141,11 +151,12 @@ class GameStart : SKScene {
         
         let firstFrameTexture2 = tileManTextures2[0]
         tileMan2 = SKSpriteNode(texture: firstFrameTexture2)
-        tileMan2.position = CGPoint(x: 3 * size.width / 5, y: size.height / 4)
+        tileMan2.position = CGPoint(x: 3 * size.width / 5, y: size.height / 6)
         tileMan2.setScale(1/3)
+        //tileMan2.setScale(1/size.width)
         addChild(tileMan2)
         
-        let actionMove2 = SKAction.move(to: CGPoint(x: 0, y: size.height / 4), duration: TimeInterval(CGFloat(1.0)))
+        let actionMove2 = SKAction.move(to: CGPoint(x: 0, y: size.height / 6), duration: TimeInterval(CGFloat(1.0)))
         
         tileMan2.run(SKAction.sequence([actionMove2, actionMoveDone]))
     }

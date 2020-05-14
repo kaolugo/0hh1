@@ -15,10 +15,11 @@ class howToPlayButton : SKLabelNode {
         super.init()
     }
     
-    init(labelFont: String){
+    init(labelFont: String, viewHeight: CGFloat){
         super.init(fontNamed: labelFont)
         self.text = "How to Play"
-        self.fontSize = 40
+        //self.fontSize = 40
+        self.fontSize = viewHeight / 20
         self.fontColor = SKColor.white
         self.colorBlendFactor = 1.0
     }

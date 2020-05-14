@@ -17,14 +17,17 @@ class fourByfour : SKLabelNode {
         //super.init()
    // }
     
-    init (labelFont: String, labelText: String, transDirection: Int) {
+    init (labelFont: String, labelText: String, transDirection: Int, viewHeight: CGFloat) {
         self.trans = transDirection
         super.init()
         self.fontName = labelFont
         self.text = labelText
-        self.fontSize = 50
+        //self.fontSize = 50
+        self.fontSize = viewHeight / 20
         self.fontColor = SKColor.white
         self.colorBlendFactor = 1.0
+      
+        
     }
     
     required init(coder aDecoder: NSCoder) {
