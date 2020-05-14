@@ -51,7 +51,7 @@ class GameStart : SKScene {
         let fourButton = fourByfour(labelFont: "AppleSDGothicNeo-Regular", labelText: "4x4", transDirection: 1, viewHeight: size.height)
         
         // EXPERIMENT - made the UI adaptable to different screen sizes
-        var fourButtonY = title.position.y - 120
+        var fourButtonY = title.position.y - size.height/7
         fourButton.position = CGPoint(x: size.width/2, y: fourButtonY)
         
         //print(xPosition)
@@ -59,12 +59,33 @@ class GameStart : SKScene {
         addChild(fourButton)
         
         
+        
+        // add 6x6 option
+        let sixButton = sixBysix(labelFont: "AppleSDGothicNeo-Regular", labelText: "6x6", transDirection: 1, viewHeight: size.height)
+        
+        //sixButton.position = CGPoint(x: size.width/2, y: fourButton.position.y - 40)
+        
+        sixButton.position = CGPoint(x: size.width/2, y: fourButton.position.y - size.height / 18)
+        
+        sixButton.zPosition = 10
+        addChild(sixButton)
+        
+        
+        // add 8x8 option
+        let eightButton = eightByEight(labelFont: "AppleSDGothicNeo-Regular", labelText: "8x8", transDirection: 1, viewHeight: size.height)
+        
+        eightButton.position = CGPoint(x: size.width / 2, y : sixButton.position.y - size.height / 18)
+        
+        eightButton.zPosition = 10
+        addChild(eightButton)
+        
+        
         // how to play button
         let howToPlay = howToPlayButton(labelFont: "AppleSDGothicNeo-Regular", viewHeight: size.height)
         
         // EXPERIMENT - made the UI adaptable to different screen sizes
-        var howToPlayY = fourButton.position.y - size.height / 20 * 2
-        howToPlay.position = CGPoint(x: size.width/2, y : howToPlayY)
+        //var howToPlayY = fourButton.position.y - size.height / 20 * 2
+        howToPlay.position = CGPoint(x: size.width/2, y : eightButton.position.y - size.height / 18)
         
         addChild(howToPlay)
         

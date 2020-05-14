@@ -47,7 +47,7 @@ class howToPlayButton : SKLabelNode {
         let scene = HowToPlayScene(size: self.scene!.size)
         
         scene.scaleMode = SKSceneScaleMode.aspectFill
-        
+        //scene.scaleMode = .aspectFit
         self.scene?.view?.presentScene(scene, transition: transition)
     }
 }

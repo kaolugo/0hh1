@@ -125,6 +125,36 @@ class Board : touched{
     return true
     
   }
+    
+  
+  func validBoard (size : Int) -> Bool {
+    //checks if col & row does not have three of the same color
+    var index = 0
+    
+    for _ in 0...(size - 1){
+      if (self.rowHasNoThreesOfColor(size : size, row : index, color : "red") == false){
+        return false
+      }
+      
+      if (self.rowHasNoThreesOfColor(size : size, row : index, color : "blue") == false){
+        return false
+      }
+      
+      if (self.colHasNoThreesOfColor(size: size, col: index, color: "red") == false){
+        return false
+      }
+      
+      if (self.colHasNoThreesOfColor(size: size, col: index, color: "blue") == false){
+        return false
+      }
+      
+      index += 1
+    }
+    
+    return true
+  }
+  
+  
 
   //RULES of the game
   

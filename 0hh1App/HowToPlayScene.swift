@@ -30,13 +30,18 @@ class HowToPlayScene : SKScene {
      */
     override init (size: CGSize) {
         super.init(size: size)
+        //self.scaleMode = .resizeFill
         
         self.backgroundColor = SKColor.black
         
         // image for how to play
         howToImage = SKSpriteNode(imageNamed: "How to Play 1")
         howToImage.position = CGPoint(x: size.width/2, y: size.height/2 - 50)
-        howToImage.setScale(3/4)
+        //howToImage.setScale(3/4)
+        howToImage.setScale(size.width / size.height)
+        
+        
+        //howToImage.setScale(size.height / 2)
         addChild(howToImage)
         
         // text for how to play
@@ -47,7 +52,9 @@ class HowToPlayScene : SKScene {
         addChild(howToText)
         
         let titleButton = replayButton(labelFont: "Arial", labelText: "Return to Title")
-        titleButton.position = CGPoint(x: size.width/2, y: size.height/2 - 350)
+        var titleButtonY = howToImage.position.y - howToImage.size.height / 2 - 40
+        //titleButton.position = CGPoint(x: size.width/2, y: size.height/2 - 350)
+        titleButton.position = CGPoint(x: size.width / 2, y: titleButtonY)
         titleButton.zPosition = 10
         addChild(titleButton)
         

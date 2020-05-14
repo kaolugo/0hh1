@@ -1,21 +1,16 @@
 //
-//  fourByfour.swift
+//  sixBySix.swift
 //  0hh1App
 //
-//  Created by Kaoru Murai on 3/4/20.
+//  Created by Kaoru Murai on 5/14/20.
 //  Copyright © 2020 Kaoru Murai. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
 import UIKit
 
-
-class fourByfour : SKLabelNode {
-    var trans: Int
-    //override init () {
-        //super.init()
-   // }
+class sixBysix : SKLabelNode{
+    var trans : Int
     
     init (labelFont: String, labelText: String, transDirection: Int, viewHeight: CGFloat) {
         self.trans = transDirection
@@ -26,8 +21,6 @@ class fourByfour : SKLabelNode {
         self.fontSize = viewHeight / 20
         self.fontColor = SKColor.white
         self.colorBlendFactor = 1.0
-      
-        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -52,7 +45,7 @@ class fourByfour : SKLabelNode {
             var view = self.scene?.view
             
             //let scene = GameScene(size: self.scene!.size, gameView: view!)
-            let scene = GameScene(size: self.scene!.size, gameView: view!)
+            let scene = sixBySixScene(size: self.scene!.size, gameView: view!)
                 scene.scaleMode = SKSceneScaleMode.aspectFill
                 self.scene?.view?.presentScene(scene, transition: transition1)
         }
@@ -64,7 +57,7 @@ class fourByfour : SKLabelNode {
             var view = self.scene?.view
             
             //let scene = GameScene(size: self.scene!.size, gameView: view!)
-             let scene = GameScene(size: self.scene!.size, gameView: view!)
+             let scene = sixBySixScene(size: self.scene!.size, gameView: view!)
                 scene.scaleMode = SKSceneScaleMode.aspectFill
                 self.scene?.view?.presentScene(scene, transition: transition2)
         }
