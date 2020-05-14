@@ -11,6 +11,10 @@
 		6F5211E5240DF311001F83B1 /* ConfettiV2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F5211E4240DF311001F83B1 /* ConfettiV2.sks */; };
 		6F5211E7240E0B3C001F83B1 /* confettiRed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F5211E6240E0B3C001F83B1 /* confettiRed.sks */; };
 		6F5211E9240E0BA3001F83B1 /* ConfettiRed2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F5211E8240E0BA3001F83B1 /* ConfettiRed2.sks */; };
+		6F561475246DC3AA0026B3E1 /* sixBySixScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F561474246DC3AA0026B3E1 /* sixBySixScene.swift */; };
+		6F561477246DE3AA0026B3E1 /* sixBySix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F561476246DE3AA0026B3E1 /* sixBySix.swift */; };
+		6F561479246DE8FE0026B3E1 /* eightByEightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F561478246DE8FE0026B3E1 /* eightByEightScene.swift */; };
+		6F56147B246DEE470026B3E1 /* eightByEight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56147A246DEE470026B3E1 /* eightByEight.swift */; };
 		6F6B16EF240CAE700051F085 /* GameClear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B16EE240CAE700051F085 /* GameClear.swift */; };
 		6FAD47F523D696570006505B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAD47F423D696570006505B /* AppDelegate.swift */; };
 		6FAD47FB23D696570006505B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAD47FA23D696570006505B /* GameScene.swift */; };
@@ -33,6 +37,10 @@
 		6F5211E4240DF311001F83B1 /* ConfettiV2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ConfettiV2.sks; sourceTree = "<group>"; };
 		6F5211E6240E0B3C001F83B1 /* confettiRed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = confettiRed.sks; sourceTree = "<group>"; };
 		6F5211E8240E0BA3001F83B1 /* ConfettiRed2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ConfettiRed2.sks; sourceTree = "<group>"; };
+		6F561474246DC3AA0026B3E1 /* sixBySixScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sixBySixScene.swift; sourceTree = "<group>"; };
+		6F561476246DE3AA0026B3E1 /* sixBySix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sixBySix.swift; sourceTree = "<group>"; };
+		6F561478246DE8FE0026B3E1 /* eightByEightScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eightByEightScene.swift; sourceTree = "<group>"; };
+		6F56147A246DEE470026B3E1 /* eightByEight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eightByEight.swift; sourceTree = "<group>"; };
 		6F6B16EE240CAE700051F085 /* GameClear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClear.swift; sourceTree = "<group>"; };
 		6FAD47F123D696570006505B /* 0hh1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 0hh1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FAD47F423D696570006505B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +105,11 @@
 				6FFCE48E241017BB00487DDA /* newBoardButton.swift */,
 				6FFCE4982411CEC300487DDA /* HowToPlayButton.swift */,
 				6FFCE492241039F600487DDA /* fourByfour.swift */,
+				6F561476246DE3AA0026B3E1 /* sixBySix.swift */,
+				6F56147A246DEE470026B3E1 /* eightByEight.swift */,
 				6FAD47FA23D696570006505B /* GameScene.swift */,
+				6F561474246DC3AA0026B3E1 /* sixBySixScene.swift */,
+				6F561478246DE8FE0026B3E1 /* eightByEightScene.swift */,
 				6FFCE4962411A11600487DDA /* HowToPlayScene.swift */,
 				6F6B16EE240CAE700051F085 /* GameClear.swift */,
 				6FFCE4902410180000487DDA /* GameStartScene.swift */,
@@ -181,13 +193,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F561475246DC3AA0026B3E1 /* sixBySixScene.swift in Sources */,
 				6FAD47FB23D696570006505B /* GameScene.swift in Sources */,
 				6FAD481123DA8BFE0006505B /* board.swift in Sources */,
 				6FFCE493241039F600487DDA /* fourByfour.swift in Sources */,
 				6FFCE4912410180000487DDA /* GameStartScene.swift in Sources */,
 				6FAD47FD23D696570006505B /* GameViewController.swift in Sources */,
+				6F561477246DE3AA0026B3E1 /* sixBySix.swift in Sources */,
 				6F6B16EF240CAE700051F085 /* GameClear.swift in Sources */,
 				6FFCE48D240F213D00487DDA /* replayButton.swift in Sources */,
+				6F561479246DE8FE0026B3E1 /* eightByEightScene.swift in Sources */,
+				6F56147B246DEE470026B3E1 /* eightByEight.swift in Sources */,
 				6FFCE4992411CEC300487DDA /* HowToPlayButton.swift in Sources */,
 				6FFCE48F241017BB00487DDA /* newBoardButton.swift in Sources */,
 				6FAD47F523D696570006505B /* AppDelegate.swift in Sources */,
