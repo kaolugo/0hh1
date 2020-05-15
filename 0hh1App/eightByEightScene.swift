@@ -35,9 +35,14 @@ class eightByEightScene: SKScene {
         
         let newBoard = eightByEight(labelFont: "AlNile", labelText: "New Board ↻", transDirection: 0, viewHeight: 800)
         
-        newBoard.position = CGPoint(x: size.width/2, y: size.height/4 - 100)
+        newBoard.position = CGPoint(x: size.width/2, y: size.height/4 - 80)
         
         addChild(newBoard)
+        
+        
+        let titleButton = replayButton(labelFont: "Arial", labelText: "Return to Title", fontSize: 20)
+        titleButton.position = CGPoint(x: size.width / 2, y : newBoard.position.y - 60)
+        addChild(titleButton)
     }
     
     

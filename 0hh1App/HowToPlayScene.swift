@@ -51,8 +51,8 @@ class HowToPlayScene : SKScene {
         howToText.zPosition = 10
         addChild(howToText)
         
-        let titleButton = replayButton(labelFont: "Arial", labelText: "Return to Title")
-        var titleButtonY = howToImage.position.y - howToImage.size.height / 2 - 40
+        let titleButton = replayButton(labelFont: "Arial", labelText: "Return to Title", fontSize: 30)
+        var titleButtonY = howToImage.position.y - howToImage.size.height / 2 - 30
         //titleButton.position = CGPoint(x: size.width/2, y: size.height/2 - 350)
         titleButton.position = CGPoint(x: size.width / 2, y: titleButtonY)
         titleButton.zPosition = 10

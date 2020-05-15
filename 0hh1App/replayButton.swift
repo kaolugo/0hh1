@@ -28,10 +28,10 @@ class replayButton : SKLabelNode {
         self.colorBlendFactor = 1.0
     }
     
-    init (labelFont: String, labelText: String) {
+    init (labelFont: String, labelText: String, fontSize: CGFloat) {
         super.init(fontNamed: labelFont)
         self.text = labelText
-        self.fontSize = 30
+        self.fontSize = fontSize
         self.fontColor = SKColor.white
         self.colorBlendFactor = 1.0
     }
