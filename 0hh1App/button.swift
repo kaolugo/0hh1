@@ -10,6 +10,8 @@ import SpriteKit
 import UIKit
 
 class Button: SKSpriteNode {
+
+    
     //facts that a button must know
     var buttonColor: String //its' own color
     var userAccess: Bool //user accessibility
@@ -17,6 +19,7 @@ class Button: SKSpriteNode {
     var count: Int
     //also the delegate
     var delegate : touched?
+
     
     init(userAccess: Bool){
         let texture = SKTexture(imageNamed: "tile")
@@ -27,7 +30,7 @@ class Button: SKSpriteNode {
         self.buttonColor = "white"
         //self.touched = false
         self.count = 0
-        
+
         
         super.init(texture: texture, color: white, size: texture.size())
         
@@ -67,10 +70,40 @@ class Button: SKSpriteNode {
             }
         }
         
+        // locked button effect
+        
+        else {
+           // TODO
+            //let play = SKAction.playSoundFileNamed("lockSound.mp3", waitForCompletion: false)
+            //let volume = SKAction.changeVolume(to: 0.1, duration: 0)
+            //let group = SKAction.group([play, volume])
+            //run(group)
+            self.run(SKAction.playSoundFileNamed("lockSound.mp3", waitForCompletion: false))
+            run(SKAction.sequence([SKAction.run(appearLock), SKAction.wait(forDuration: 0.5), SKAction.run(disappearLock)]))
+        }
+        
 
         delegate!.touchesBegan()
 
     
+    }
+    
+    
+    
+    func appearLock() {
+        self.texture = SKTexture(imageNamed: "whiteLock")
+        self.color = .white
+    }
+    
+    func disappearLock(){
+        //lock.removeFromParent()
+        self.texture = SKTexture(imageNamed: "tile")
+        if (buttonColor == "red"){
+            self.color = .red
+        }
+        else {
+            self.color = .blue
+        }
     }
     
     

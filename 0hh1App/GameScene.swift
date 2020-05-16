@@ -28,9 +28,9 @@ class GameScene: SKScene{
         
         self.backgroundColor = UIColor.black
         
-        formatBoard(sampleBoard: sampleBoard)
+        //formatBoard(sampleBoard: sampleBoard)
         
-        populateBoard(sampleBoard: sampleBoard)
+        //populateBoard(sampleBoard: sampleBoard)
         
         //let new = newBoardButton(labelFont: "AlNile")
         let newBoard = fourByfour(labelFont: "AlNile", labelText: "New Board ↻", transDirection: 0, viewHeight: 800)
@@ -56,6 +56,12 @@ class GameScene: SKScene{
         //super.sceneDidLoad()
         let sampleBoard = Board(dimensions: 4, gameView: view, gameScene: self)
         self.backgroundColor = UIColor.black
+        
+        // add menu music
+        let playMusic = SKAudioNode(fileNamed: "playMusic.mp3")
+        
+        addChild(playMusic)
+
       
         formatBoard(sampleBoard: sampleBoard)
         
@@ -87,10 +93,11 @@ class GameScene: SKScene{
             
             sampleBoard.board[row][col].position = CGPoint(x: positionX, y: positionY)
             
+            
             addChild(sampleBoard.board[row][col])
+
             
             positionX = positionX + incrementRow
-            //positionY = positionY - incrementRow
             
           }
           positionY = positionY - incrementRow

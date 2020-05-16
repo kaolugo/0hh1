@@ -28,10 +28,10 @@ class sixBySixScene: SKScene{
         
         self.backgroundColor = UIColor.black
         
-        formatBoard(board: board)
+        //formatBoard(board: board)
         
         
-        populateBoard(board: board)
+        //populateBoard(board: board)
         
         
         let newBoard = sixBysix(labelFont: "AlNile", labelText: "New Board ↻", transDirection: 0, viewHeight: 800)
@@ -50,6 +50,13 @@ class sixBySixScene: SKScene{
     
     override func didMove(to view: SKView){
         let board = Board(dimensions: 6, gameView: view, gameScene: self)
+        
+        // add play music
+        let playMusic = SKAudioNode(fileNamed: "playMusic.mp3")
+        
+        addChild(playMusic)
+
+        
         
         self.backgroundColor = UIColor.black
         

@@ -65,6 +65,17 @@ class HowToPlayScene : SKScene {
       fatalError("init(coder:) has not been implemented")
     }
     
+    
+    override func didMove(to view: SKView) {
+        // add menu music
+        let menuMusic = SKAudioNode(fileNamed: "menuMusic.mp3")
+        
+        addChild(menuMusic)
+
+    }
+    
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         if counter == 1 {

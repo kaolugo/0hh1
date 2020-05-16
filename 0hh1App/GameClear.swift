@@ -62,6 +62,15 @@ class GameClear : SKScene {
         
     }
     
+    
+    override func didMove(to view: SKView) {
+        // add play music
+        let menuMusic = SKAudioNode(fileNamed: "menuMusic.mp3")
+        
+        addChild(menuMusic)
+    }
+    
+    
     required init(coder aDecoder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
     }
