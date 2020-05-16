@@ -15,6 +15,9 @@
 		6F561477246DE3AA0026B3E1 /* sixBySix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F561476246DE3AA0026B3E1 /* sixBySix.swift */; };
 		6F561479246DE8FE0026B3E1 /* eightByEightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F561478246DE8FE0026B3E1 /* eightByEightScene.swift */; };
 		6F56147B246DEE470026B3E1 /* eightByEight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56147A246DEE470026B3E1 /* eightByEight.swift */; };
+		6F56147F246F4D330026B3E1 /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F56147E246F4D330026B3E1 /* menuMusic.mp3 */; };
+		6F561481246F4DF60026B3E1 /* playMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F561480246F4DF60026B3E1 /* playMusic.mp3 */; };
+		6F561483246F73760026B3E1 /* lockSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F561482246F73750026B3E1 /* lockSound.mp3 */; };
 		6F6B16EF240CAE700051F085 /* GameClear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B16EE240CAE700051F085 /* GameClear.swift */; };
 		6FAD47F523D696570006505B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAD47F423D696570006505B /* AppDelegate.swift */; };
 		6FAD47FB23D696570006505B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAD47FA23D696570006505B /* GameScene.swift */; };
@@ -41,6 +44,9 @@
 		6F561476246DE3AA0026B3E1 /* sixBySix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sixBySix.swift; sourceTree = "<group>"; };
 		6F561478246DE8FE0026B3E1 /* eightByEightScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eightByEightScene.swift; sourceTree = "<group>"; };
 		6F56147A246DEE470026B3E1 /* eightByEight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eightByEight.swift; sourceTree = "<group>"; };
+		6F56147E246F4D330026B3E1 /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
+		6F561480246F4DF60026B3E1 /* playMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playMusic.mp3; sourceTree = "<group>"; };
+		6F561482246F73750026B3E1 /* lockSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lockSound.mp3; sourceTree = "<group>"; };
 		6F6B16EE240CAE700051F085 /* GameClear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClear.swift; sourceTree = "<group>"; };
 		6FAD47F123D696570006505B /* 0hh1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 0hh1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FAD47F423D696570006505B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +96,9 @@
 		6FAD47F323D696570006505B /* 0hh1App */ = {
 			isa = PBXGroup;
 			children = (
+				6F56147E246F4D330026B3E1 /* menuMusic.mp3 */,
+				6F561482246F73750026B3E1 /* lockSound.mp3 */,
+				6F561480246F4DF60026B3E1 /* playMusic.mp3 */,
 				6FAD480123D696590006505B /* Assets.xcassets */,
 				6F5211E4240DF311001F83B1 /* ConfettiV2.sks */,
 				6F5211E8240E0BA3001F83B1 /* ConfettiRed2.sks */,
@@ -177,12 +186,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FAD480023D696570006505B /* Main.storyboard in Resources */,
+				6F56147F246F4D330026B3E1 /* menuMusic.mp3 in Resources */,
 				6F5211E7240E0B3C001F83B1 /* confettiRed.sks in Resources */,
 				6FAD480223D696590006505B /* Assets.xcassets in Resources */,
 				6FAD480523D696590006505B /* LaunchScreen.storyboard in Resources */,
 				6F5211DD240DEE86001F83B1 /* confetti.sks in Resources */,
+				6F561481246F4DF60026B3E1 /* playMusic.mp3 in Resources */,
 				6F5211E5240DF311001F83B1 /* ConfettiV2.sks in Resources */,
 				6F5211E9240E0BA3001F83B1 /* ConfettiRed2.sks in Resources */,
+				6F561483246F73760026B3E1 /* lockSound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
